@@ -4,4 +4,4 @@ Sistema de red neuronal multicapa. Proyecto de Mineria de Datos, capaz de predec
 ### Entradas
 - Mes
 - Nave
-- Alimentsi se obtendra o no la tasa de crecimiento acorde a las entradas.
+- Alimento.
