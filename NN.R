@@ -40,3 +40,10 @@ nn.results <- compute(nn, temp_test)
 # transform the input data into a standardized format
 results <- data.frame(actual = testset$expected, prediction = nn.results$net.result)
 head(results)
+
+# Transform the data in a matriz with round applied
+rounded_matriz <- sapply(results, round, digits = 0)
+rounded_df = data.frame(rounded_matriz)
+attach(rounded_df)
+# Show the confusion matrix
+table(actual, prediction)
