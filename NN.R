@@ -15,13 +15,14 @@ testset <- medFrame[349:463,]
 # library for neural networks
 # https://www.rdocumentation.org/packages/neuralnet/versions/1.44.2/topics/neuralnet
 # output = expected
-# inputs (nave, mes, alimentos)
+# inputs (tempProm, nave, mes, alimentos)
 # without hidden layer
 # act function does not apply
 # error function as sopping criteria = 0.01
 # this NN is for training
 library(neuralnet)
-nn <- neuralnet(`expected` ~ `nave` + `mes` + `alimentos`, data=trainset, hidden=0, linear.output=FALSE, threshold=0.01)
+nn <- neuralnet(`expected` ~ `tempProm` + `nave` + `mes` + `alimentos`, data=trainset, hidden=c(3,3,2),
+                linear.output=FALSE, threshold=0.001)
 
 # Printing the results matrix
 # with information such as the error, steps, and expected values
@@ -32,7 +33,7 @@ plot(nn)
 
 # process for testing
 # split columns from testset DataFrame
-temp_test <- subset(testset, select = c("nave", "mes", "alimentos"))
+temp_test <- subset(testset, select = c("tempProm", "nave", "mes", "alimentos"))
 head(temp_test)
 
 # collect NN and data for testing in a new DataFrame
